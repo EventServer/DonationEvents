@@ -1,0 +1,4 @@
+name: DonationEvents
+version: '${version}'
+main: tw.donationevents.DonationEvents
+api-version: 1.19

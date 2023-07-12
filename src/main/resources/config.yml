@@ -1,0 +1,6 @@
+token: "iX48USqxE3xWZigSRYwn"
+
+messages:
+  error-log: "§cОшибка соединения§6 D-A:§f %text%"
+  connect-log: "§aУспешное соединение с§6 D-A."
+  disconnect-log: "§cСоединение прервано с§6 D-A."
