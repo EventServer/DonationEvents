@@ -19,8 +19,9 @@ public class JavaPluginDonationEventListener implements DonationEventListener {
         final Donation donation = new Donation();
         donation.setDonor(donationJsonStruct.get("username").toString());
         donation.setMessage(donationJsonStruct.get("message").toString());
-        donation.setCash(Float.parseFloat(donationJsonStruct.get("amount_formatted").toString()));
+        donation.setCash(Float.parseFloat(donationJsonStruct.get("amount").toString()));
         donation.setCurrency(Currency.valueOf(donationJsonStruct.get("currency").toString()));
+        plugin.getLogger().info("Donation: "+ donation);
         Bukkit.getScheduler().runTask(DonationEvents.getInstance(), () -> new DonationAlertsEvent(donation).callEvent());
     }
 

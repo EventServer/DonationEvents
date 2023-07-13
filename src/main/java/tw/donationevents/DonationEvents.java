@@ -19,6 +19,6 @@ public final class DonationEvents extends JavaPlugin {
         Config.Load(getConfig());
 
         new Thread(() ->
-                new DonationAlerts(Config.TOKEN, new JavaPluginDonationEventListener(DonationEvents.getInstance())));
+                new DonationAlerts(Config.TOKEN, new JavaPluginDonationEventListener(DonationEvents.getInstance()))).start();
     }
 }

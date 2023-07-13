@@ -1,6 +1,10 @@
 plugins {
+    id 'com.github.johnrengelman.shadow' version '5.1.0'
     id 'java'
 }
+apply plugin: 'com.github.johnrengelman.shadow'
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
 group = 'tw'
 version = '1.0'
@@ -22,9 +26,10 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
-    implementation group: 'io.socket', name: 'socket.io-client', version: '1.0.1'
-    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+    implementation  group: 'io.socket', name: 'socket.io-client', version: '1.0.1'
+    shadow  group: 'io.socket', name: 'socket.io-client', version: '1.0.1'
 }
 
 def targetJavaVersion = 17
@@ -43,6 +48,13 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
+shadowJar {
+    configurations = [project.configurations.shadow]
+    archiveClassifier.set('')
+    archiveBaseName.set('DonationEvents')
+
+}
+
 processResources {
     def props = [version: version]
     inputs.properties props
@@ -51,3 +63,4 @@ processResources {
         expand props
     }
 }
+build.dependsOn(shadowJar);
