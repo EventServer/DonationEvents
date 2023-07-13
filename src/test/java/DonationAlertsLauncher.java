@@ -5,7 +5,7 @@ import java.net.URISyntaxException;
 
 public class DonationAlertsLauncher {
     public static void main(String[] args) throws URISyntaxException, JSONException {
-        new DonationAlerts("iX48USqxE3xWZigSRYwn", new TestEventListener());
+        new DonationAlerts("<token>", new TestEventListener());
 
     }
 }
